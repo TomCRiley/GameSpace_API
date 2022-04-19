@@ -5,8 +5,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
-from Channels.models import Channel
-
 from .models import *
 from .serializers import *
 
@@ -14,7 +12,6 @@ from .serializers import *
 
 
 class UserPostList(ListCreateAPIView):  # user profile page get all user posts
-    # queryset = Post.objects.all()
     serializer_class = PostSerializer
 
     def get_queryset(self):
@@ -35,15 +32,13 @@ class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
             queryset = queryset.filter(channel_id=channelid)
         return queryset
 
-# queryset = Post.objects.filter(Channels_channel__id='2')
-
 
 class UserCreatePost(ListCreateAPIView):
 
     permission_classes = [IsAuthenticated, ]
 
     def post(self, request):
-        request.data['username'] = request.user.id
+        request.data['first_name'] = request.user.id  # HELP what is this?
 
         main_post_serializer = PostSerializer(data=request.data)
         if main_post_serializer.is_valid():

@@ -12,4 +12,4 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PopulatedPostSerializer(PostSerializer):
 
-    owner = UserSerializer()
+    username = UserSerializer()
