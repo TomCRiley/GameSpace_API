@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'Channels',
     'Users',
+    'Posting',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://<efbookstore>.herokuapp.com']
 django_on_heroku.settings(locals())
+
+AUTH_USER_MODEL = "Users.CustomUser"
