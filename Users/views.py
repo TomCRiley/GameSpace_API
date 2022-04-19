@@ -44,7 +44,7 @@ class LoginView(APIView):
              'exp': int(dt.strftime('%s'))
              },
             settings.SECRET_KEY, algorithm='HS256')
-        return Response({'token': token, 'message': f'Welcome back {user.username}!'})
+        return Response({'token': token, 'message': f'Welcome back {user.first_name}!'})
 
 
 class CredentialsView(APIView):
