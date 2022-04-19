@@ -1,18 +1,21 @@
 from django.db import models
+from Channels.models import Channel
 from Users.models import CustomUser
 # Create your models here.
 
 
-class Post(models.Model):  # rename to just Posts
+class Post(models.Model):
 
     title = models.CharField(
         max_length=60, default="You should probably write a title....")
     username = models.ForeignKey(
-        CustomUser, related_name="posts", on_delete=models.PROTECT)
+        CustomUser, related_name="posts", on_delete=models.CASCADE)
     createdDate = models.DateTimeField(null=True)
-    # channel ID
+    text = models.CharField(max_length=500)
+    channel = models.ForeignKey(
+        Channel, related_name="user_posts", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.title} written by {self.username} is: {self.text} written at {self.created_date}"
+        return f"{self.title} {self.username} {self.createdDate}"
 
 # class ChannelPosts(models.Model):

@@ -1,5 +1,7 @@
 from django.db import models
 
+from Users.models import CustomUser
+
 # Create your models here.
 
 
@@ -42,6 +44,8 @@ class Channel(models.Model):
     description = models.CharField(max_length=300)
     createdDate = models.DateField(null=True)
     image = models.CharField(max_length=200)
+    username = models.ForeignKey(
+        CustomUser, related_name='Channel_Creator_Username', on_delete=models.PROTECT, null=True)
 
     # models.PROTECT = avoid deleting the gameChannel if the game/platform/dev is deleted in the game/platform/dev model
     game = models.ForeignKey(Game, related_name='games',
@@ -52,4 +56,4 @@ class Channel(models.Model):
         Developer, related_name='developers', on_delete=models.PROTECT)
 
     def __str__(self):
-        return f'{self.name} {self.createdDate}'
+        return f'{self.name}'
