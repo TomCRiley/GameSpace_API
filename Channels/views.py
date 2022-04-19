@@ -1,12 +1,11 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView
 from rest_framework.views import APIView
-# from rest_framework import status
-# from rest_framework.response import Response
-# from rest_framework.exceptions import NotFound
 from .models import *
 from .serializers.common import *
 
 # Create your views here.
+
+# view required that lists all posts on a channel
 
 
 class ChannelList(ListCreateAPIView):  # lists all gamechannels across site

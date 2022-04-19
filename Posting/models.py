@@ -3,7 +3,7 @@ from Users.models import CustomUser
 # Create your models here.
 
 
-class MainPost(models.Model):
+class UserPost(models.Model):
 
     title = models.CharField(max_length=60, default="default_title")
     username = models.ForeignKey(
@@ -12,3 +12,6 @@ class MainPost(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# class ChannelPosts(models.Model):
