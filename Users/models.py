@@ -6,10 +6,9 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser, models.Model):
 
-    name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     bio = models.CharField(max_length=150, null=True)
     image = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.username
+        return f"{self.username} ID:{self.id} "

@@ -25,10 +25,16 @@ class UserPostList(ListCreateAPIView):  # user profile page get all user posts
         return queryset
 
 
-# all posts -  needs channel ID filter to be channel specific
-class ChannelPostList(ListCreateAPIView):
-    queryset = Channel.objects.filter(id=2)
+class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
     serializer_class = PostSerializer
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        channelid = self.request.query_params.get('id')
+        if channelid:
+            queryset = queryset.filter(channel_id=channelid)
+        return queryset
+
 # queryset = Post.objects.filter(Channels_channel__id='2')
 
 
