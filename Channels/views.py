@@ -3,9 +3,7 @@ from rest_framework.views import APIView
 from .models import *
 from .serializers.common import *
 
-# Create your views here.
-
-# view required that lists all posts on a channel
+# view required that lists all posts on a channel?
 
 
 class ChannelList(ListCreateAPIView):  # lists all gamechannels across site

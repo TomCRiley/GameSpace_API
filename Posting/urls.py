@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import UserPostList
+from .views import ChannelPostList
 
 urlpatterns = [
-    path('posts/', UserPostList.as_view())
+    path('posts/', ChannelPostList.as_view())
 ]

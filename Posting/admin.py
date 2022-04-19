@@ -7,4 +7,4 @@ from .models import *
 #     list_display = ('username', 'createdDate')
 
 
-admin.site.register(UserPost)
+admin.site.register(Post)

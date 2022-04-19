@@ -144,7 +144,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://<efbookstore>.herokuapp.com']
-django_on_heroku.settings(locals())
+# CSRF_TRUSTED_ORIGINS = ['https://.herokuapp.com'] FIXURL
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'Users.authentication.JWTAuthentication',
+    ],
+}
 
 AUTH_USER_MODEL = "Users.CustomUser"
+
+django_on_heroku.settings(locals())
