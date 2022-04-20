@@ -69,8 +69,12 @@ class UserPostUpdateDestroy(APIView):
 
     def delete(self, request, pk):
         post_to_delete = self.get_post(pk=pk)
+
+        if post_to_delete.user.id != request.user.id:
+            raise PermissionDenied
+
         post_to_delete.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT, detail="Deleted your post!")
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get_post(self, pk):
         try:

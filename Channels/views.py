@@ -3,8 +3,6 @@ from rest_framework.views import APIView
 from .models import *
 from .serializers.common import *
 
-# view required that lists all posts on a channel?
-
 
 class ChannelList(ListCreateAPIView):  # lists all gamechannels across site
     queryset = Channel.objects.all()
@@ -15,10 +13,7 @@ class ChannelUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Channel.objects.all()
     serializer_class = ChannelSerializer
 
-# detal view required?
-
-# class GameChannelAllPosts(RetrieveAPIView):
-# more detailed class based view
+# detail view required?
 
 
 class GameList(ListCreateAPIView):
