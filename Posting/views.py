@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -33,7 +33,7 @@ class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
         return queryset
 
 
-class UserCreatePost(ListCreateAPIView):
+class UserCreatePost(ListCreateAPIView):  # user can create a post
 
     permission_classes = [IsAuthenticated, ]
 
@@ -54,9 +54,18 @@ class UserPostUpdateDestroy(APIView):
     def put(self, request, pk):
         post_to_update = self.get_post(pk=pk)
 
-        if post_to_update.is_valid():
-            return Response(data=PostSerializer.data, status=status.HTTP_200_OK)
-        return Response(post_to_update.data, status=status.HTTP_400_BAD_REQUEST)
+        if post_to_update.user.id != request.user.id:
+            raise PermissionDenied
+
+        request.data['channel'] = post_to_update.channel.id
+        request.data['user'] = post_to_update.user.id
+        post_update_serializer = PostSerializer(
+            post_to_update, data=request.data)
+
+        if post_update_serializer.is_valid():
+            post_update_serializer.save()
+            return Response(data=post_update_serializer.data, status=status.HTTP_200_OK)
+        return Response(post_update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
         post_to_delete = self.get_post(pk=pk)
@@ -67,4 +76,4 @@ class UserPostUpdateDestroy(APIView):
         try:
             return Post.objects.get(pk=pk)
         except Post.DoesNotExist:
-            raise NotFound(detail="Post doensn't exit!")
+            raise NotFound(detail="Post doesn't exit!")
