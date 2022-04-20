@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -16,7 +16,7 @@ class UserPostList(ListCreateAPIView):  # user profile page get all user posts
 
     def get_queryset(self):
         queryset = Post.objects.all()
-        userid = self.request.query_params.get('id')
+        userid = self.request.query_params.get('user')
         if userid:
             queryset = queryset.filter(user_id=userid)
         return queryset
@@ -27,7 +27,7 @@ class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
 
     def get_queryset(self):
         queryset = Post.objects.all()
-        channelid = self.request.query_params.get('id')
+        channelid = self.request.query_params.get('channel')
         if channelid:
             queryset = queryset.filter(channel_id=channelid)
         return queryset
@@ -45,3 +45,26 @@ class UserCreatePost(ListCreateAPIView):
             main_post_serializer.save()
             return Response(data=main_post_serializer.data, status=status.HTTP_201_CREATED)
         return Response(data=main_post_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserPostUpdateDestroy(APIView):
+
+    permission_classes = [IsAuthenticated, ]
+
+    def put(self, request, pk):
+        post_to_update = self.get_post(pk=pk)
+
+        if post_to_update.is_valid():
+            return Response(data=PostSerializer.data, status=status.HTTP_200_OK)
+        return Response(post_to_update.data, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        post_to_delete = self.get_post(pk=pk)
+        post_to_delete.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT, detail="Deleted your post!")
+
+    def get_post(self, pk):
+        try:
+            return Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            raise NotFound(detail="Post doensn't exit!")

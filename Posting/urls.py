@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import ChannelPostList, UserPostList
+from .views import ChannelPostList, UserPostList, UserPostUpdateDestroy
 
 urlpatterns = [
-    path('posts/', ChannelPostList.as_view()),
-    # path('posts/', UserPostList.as_view())
+    path('channel/posts/', ChannelPostList.as_view()),
+    path('user/posts/', UserPostList.as_view()),
+    path('user/posts/update/<int:pk>/', UserPostUpdateDestroy.as_view()),
 ]

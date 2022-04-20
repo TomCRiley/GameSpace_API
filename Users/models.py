@@ -9,6 +9,7 @@ class CustomUser(AbstractUser, models.Model):
     username = models.CharField(max_length=50, unique=True, null=True)
     bio = models.CharField(max_length=150, null=True)
     image = models.CharField(max_length=200)
+    # how to associate posts?
 
     def __str__(self):
         return f"{self.username} ID:{self.id} "
