@@ -1,9 +1,14 @@
 from django.urls import path
+
+import Posting
+from Posting.views import ChannelPostList
 from .views import *
 
 urlpatterns = [
     # list all channels onserver
     path('channels/', ChannelList.as_view()),
+
+    path('channel/<int:pk>/posts/', ChannelPostList.as_view()),
 
     path('channel/<int:pk>/', SingleChannel.as_view()),
 

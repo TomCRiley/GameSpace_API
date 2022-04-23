@@ -5,6 +5,8 @@ from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.response import Response
 from rest_framework import status
 
+from Channels.serializers.common import ChannelSerializer
+
 from .models import *
 from .serializers import *
 
@@ -23,13 +25,14 @@ class UserPostList(ListCreateAPIView):  # user profile page get all user posts
 
 
 class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
+
     serializer_class = PostSerializer
 
-    def get_queryset(self):
+    def get_queryset(self, request, pk):
         queryset = Post.objects.all()
-        channelid = self.request.query_params.get('channel')
-        if channelid:
-            queryset = queryset.filter(channel_id=channelid)
+        # channelid = self.request.query_params.get('channel')
+        if pk:
+            queryset = queryset.filter(channel_id=pk)
         return queryset
 
 
