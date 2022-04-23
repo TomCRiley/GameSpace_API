@@ -2,7 +2,12 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('channels/', ChannelList.as_view()),  # list all channels onserver
+    # list all channels onserver
+    path('channels/', ChannelList.as_view()),
+
+    path('channel/<int:pk>/', SingleChannel.as_view()),
+
+    # path('channel/<str:urlname>/', SingleChannelName.as_view()),
     # what it says on the tin
     path('channels/<int:pk>/', ChannelUpdateDestroy.as_view()),
     # path('channel details ') -- not sure if needed? --
