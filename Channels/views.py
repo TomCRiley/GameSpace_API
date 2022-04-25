@@ -2,6 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework.views import APIView
 from .models import *
 from .serializers.common import *
+from rest_framework.response import Response
 
 
 # lists all gamechannels, create new game channels across site
@@ -15,15 +16,25 @@ class SingleChannel(RetrieveAPIView):
     serializer_class = ChannelSerializer
 
 
-# class SingleChannelName(RetrieveAPIView):
-#     serializer_class = ChannelSerializer
+# class UrlNameChannel(RetrieveAPIView):
+#     def get(self, request, urlname):
+#         channels = list(Channel.objects.filter(urlname=urlname))
+#         if len(channels) == 0:
+#             Response(status=404)
+#         channel_serializer = ChannelSerializer(channels[0])
+#         return Response(data=channel_serializer.data)
 
-#     def get_queryset(self, request, urlName):
-#         queryset = Channel.objects.all()
-#         # urlName = self.request.query_params.get()
-#         if urlName:
-#             queryset = queryset.filter(urlName=urlName)
-#         return queryset
+class UrlNameChannel(RetrieveAPIView):
+
+    def get(self, request, urlname):
+
+        queryset = Channel.objects.filter(urlname=urlname)
+        if (queryset.len() == 0):
+            Response(status=404)
+
+        channels = list(queryset)
+        channel_serializer = ChannelSerializer(channels[0])
+        return Response(data=channel_serializer.data)
 
 
 class ChannelUpdateDestroy(RetrieveUpdateDestroyAPIView):

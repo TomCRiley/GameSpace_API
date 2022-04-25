@@ -11,6 +11,7 @@ urlpatterns = [
     path('channel/<int:pk>/posts/', ChannelPostList.as_view()),
 
     path('channel/<int:pk>/', SingleChannel.as_view()),
+    path('channel/<str:urlname>/', UrlNameChannel.as_view()),
 
     # path('channel/<str:urlname>/', SingleChannelName.as_view()),
     # what it says on the tin
