@@ -41,7 +41,7 @@ class Game(models.Model):
 class Channel(models.Model):
 
     name = models.CharField(max_length=60)
-    urlname = models.CharField(max_length=50, unique=True)
+    urlname = models.CharField(max_length=50, unique=True, null=True)
     description = models.CharField(max_length=300)
     createdDate = models.DateField(null=True)
     image = models.CharField(max_length=200)
