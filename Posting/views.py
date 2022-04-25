@@ -28,11 +28,13 @@ class ChannelPostList(ListCreateAPIView):  # all posts for one specific channel
 
     serializer_class = PostSerializer
 
-    def get_queryset(self, request, pk):
+    def get_queryset(self):
         queryset = Post.objects.all()
-        # channelid = self.request.query_params.get('channel')
-        if pk:
-            queryset = queryset.filter(channel_id=pk)
+        channelid = self.request.query_params.get('channel')
+        print("alert", queryset)
+
+        if channelid:
+            queryset = queryset.filter(channel_id=channelid)
         return queryset
 
 
