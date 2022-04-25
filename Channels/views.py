@@ -16,24 +16,15 @@ class SingleChannel(RetrieveAPIView):
     serializer_class = ChannelSerializer
 
 
-# class UrlNameChannel(RetrieveAPIView):
-#     def get(self, request, urlname):
-#         channels = list(Channel.objects.filter(urlname=urlname))
-#         if len(channels) == 0:
-#             Response(status=404)
-#         channel_serializer = ChannelSerializer(channels[0])
-#         return Response(data=channel_serializer.data)
-
 class UrlNameChannel(RetrieveAPIView):
 
     def get(self, request, urlname):
 
-        queryset = Channel.objects.filter(urlname=urlname)
-        if (queryset.len() == 0):
-            Response(status=404)
+        channel = Channel.objects.filter(urlname=urlname).first()
+        if (channel == None):
+            return Response(status=404)
 
-        channels = list(queryset)
-        channel_serializer = ChannelSerializer(channels[0])
+        channel_serializer = ChannelSerializer(channel)
         return Response(data=channel_serializer.data)
 
 
