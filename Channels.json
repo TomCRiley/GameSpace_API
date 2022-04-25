@@ -1,0 +1,169 @@
+[
+{
+  "model": "Channels.developer",
+  "pk": 1,
+  "fields": {
+    "name": "test",
+    "description": "test"
+  }
+},
+{
+  "model": "Channels.developer",
+  "pk": 2,
+  "fields": {
+    "name": "Nintendo of Japan",
+    "description": "Japan branch of nintendo makes games"
+  }
+},
+{
+  "model": "Channels.developer",
+  "pk": 3,
+  "fields": {
+    "name": "Big Gun Game Maker",
+    "description": "a developer that makes big gun games"
+  }
+},
+{
+  "model": "Channels.developer",
+  "pk": 4,
+  "fields": {
+    "name": "Naughty Dog",
+    "description": "Also made jak and daxter!"
+  }
+},
+{
+  "model": "Channels.platform",
+  "pk": 1,
+  "fields": {
+    "name": "test",
+    "description": "test"
+  }
+},
+{
+  "model": "Channels.platform",
+  "pk": 2,
+  "fields": {
+    "name": "Nintendo",
+    "description": "Famous for big hunks of grey plastic"
+  }
+},
+{
+  "model": "Channels.platform",
+  "pk": 3,
+  "fields": {
+    "name": "Playstation 5",
+    "description": "A sony console"
+  }
+},
+{
+  "model": "Channels.game",
+  "pk": 1,
+  "fields": {
+    "title": "test",
+    "developer": 1,
+    "image": "https://www.bing.com/images/search?view=detailV2&ccid=81LruSW5&id=18F11DA1468AE221AA0AF2F8CA1FAD12FE8334D2&thid=OIP.81LruSW5REtMXH5QpWsISQHaE8&mediaurl=https%3a%2f%2fimg.redbull.com%2fimages%2fc_crop%",
+    "release_date": "2022-04-19",
+    "platform": [
+      1
+    ]
+  }
+},
+{
+  "model": "Channels.game",
+  "pk": 2,
+  "fields": {
+    "title": "Mario Odysseus, the oft ignored Greek-Mario spin-off",
+    "developer": 2,
+    "image": "https://image.com/image.jpg",
+    "release_date": "2014-06-01",
+    "platform": [
+      2
+    ]
+  }
+},
+{
+  "model": "Channels.game",
+  "pk": 3,
+  "fields": {
+    "title": "Big gun game",
+    "developer": 3,
+    "image": "https://www.bing.com/images/search?view=detailV2&ccid=81LruSW5&id=18F11DA1468AE221AA0AF2F8CA1FAD12FE8334D2&thid=OIP.81LruSW5REtMXH5QpWsISQHaE8&mediaurl=https%3a%2f%2fimg.redbull.com%2fimages%2fc_crop%",
+    "release_date": "2022-04-19",
+    "platform": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "Channels.game",
+  "pk": 4,
+  "fields": {
+    "title": "Last Of Us",
+    "developer": 4,
+    "image": "https://th.bing.com/th/id/OIP.neRFhS6YPJw1Tr3OyYGXkgHaEK?w=298&h=180&c=7&r=0&o=5&dpr=1.8&pid=1.7",
+    "release_date": "2022-04-24",
+    "platform": []
+  }
+},
+{
+  "model": "Channels.channel",
+  "pk": 1,
+  "fields": {
+    "name": "SSX Fwends 3",
+    "urlname": "ssxfriends",
+    "description": "howdy test test",
+    "createdDate": "2014-06-01",
+    "image": "https://th.bing.com/th/id/OIP.TatbrbqGaenibCayfpCJoAHaEK?pid=ImgDet&rs=1",
+    "user": 1,
+    "game": 2,
+    "platform": 2,
+    "developer": 2
+  }
+},
+{
+  "model": "Channels.channel",
+  "pk": 6,
+  "fields": {
+    "name": "Ninty Nerds",
+    "urlname": "nintendononces",
+    "description": "howdy test test",
+    "createdDate": "2014-06-01",
+    "image": "https://th.bing.com/th/id/OIP.HX6xkLINjrK-AP--bDc01wHaFj?pid=ImgDet&rs=1",
+    "user": 2,
+    "game": 2,
+    "platform": 2,
+    "developer": 1
+  }
+},
+{
+  "model": "Channels.channel",
+  "pk": 7,
+  "fields": {
+    "name": "Sony Suckaz",
+    "urlname": "sonysuckas",
+    "description": "howdy test test",
+    "createdDate": "2014-06-01",
+    "image": "https://th.bing.com/th/id/OIP.8SZEkkmnNpsraxottqQj6AHaEK?w=285&h=180&c=7&r=0&o=5&dpr=1.8&pid=1.7",
+    "user": 1,
+    "game": 3,
+    "platform": 3,
+    "developer": 1
+  }
+},
+{
+  "model": "Channels.channel",
+  "pk": 8,
+  "fields": {
+    "name": "The Last of Us Fanclub",
+    "urlname": null,
+    "description": "howdy test test",
+    "createdDate": "2014-06-01",
+    "image": "https://th.bing.com/th/id/OIP.neRFhS6YPJw1Tr3OyYGXkgHaEK?pid=ImgDet&rs=1",
+    "user": null,
+    "game": 4,
+    "platform": 3,
+    "developer": 4
+  }
+}
+]

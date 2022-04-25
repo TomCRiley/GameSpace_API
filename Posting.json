@@ -1,0 +1,112 @@
+[
+{
+  "model": "Posting.post",
+  "pk": 2,
+  "fields": {
+    "title": "gamey game games games",
+    "createdDate": "1994-06-03T00:00:00Z",
+    "text": "Default texteroooo!",
+    "channel": 1,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 3,
+  "fields": {
+    "title": "The Hobbit",
+    "createdDate": "1994-06-03T00:00:00Z",
+    "text": "Its a game about the hobbit",
+    "channel": 1,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 4,
+  "fields": {
+    "title": "I dont love this game!!",
+    "createdDate": "1994-06-03T00:00:00Z",
+    "text": "Default texteroooo!",
+    "channel": 1,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 5,
+  "fields": {
+    "title": "a new leaf!",
+    "createdDate": "1994-06-03T18:14:02Z",
+    "text": "It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool",
+    "channel": 1,
+    "user": 3
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 6,
+  "fields": {
+    "title": "i hate video games!",
+    "createdDate": "2022-04-19T19:26:48Z",
+    "text": "its a big testtttt",
+    "channel": 1,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 7,
+  "fields": {
+    "title": "tile about a game baby",
+    "createdDate": "2022-04-19T20:11:54Z",
+    "text": "Posty posty post",
+    "channel": 7,
+    "user": 3
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 8,
+  "fields": {
+    "title": "Its a post about stuff n stuff",
+    "createdDate": "2022-04-19T20:13:13Z",
+    "text": "test test test please work",
+    "channel": 7,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 9,
+  "fields": {
+    "title": "a big big big big cool game!",
+    "createdDate": "1994-06-03T18:14:02Z",
+    "text": "It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool",
+    "channel": 1,
+    "user": 1
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 13,
+  "fields": {
+    "title": "The Hobbit 2",
+    "createdDate": "1994-06-03T18:14:02Z",
+    "text": "Its a game about the hobbit",
+    "channel": 1,
+    "user": 4
+  }
+},
+{
+  "model": "Posting.post",
+  "pk": 15,
+  "fields": {
+    "title": "A cool video game from user 5",
+    "createdDate": "1994-06-03T18:14:02Z",
+    "text": "It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool It's really cool",
+    "channel": 1,
+    "user": 5
+  }
+}
+]
