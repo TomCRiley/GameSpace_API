@@ -144,7 +144,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://gamrapi.herokuapp.com']
+# CSRF_TRUSTED_ORIGINS = ['https://gamrapi.herokuapp.com']
 
 
 REST_FRAMEWORK = {
