@@ -29,7 +29,7 @@ class Game(models.Model):
     developer = models.ForeignKey(
         Developer, related_name='developer', on_delete=models.CASCADE)
     platform = models.ManyToManyField(
-        Platform, related_name='platform')  # add on_delete CASCADE to the through model
+        Platform, related_name='platform')
     image = models.CharField(max_length=200)
     release_date = models.DateField(null=True)
 
