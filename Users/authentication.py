@@ -5,8 +5,6 @@ from django.conf import settings  # for the secret key
 import jwt
 User = get_user_model()
 
-# this whole file is similar to the secureRoute middleware file in Express
-
 
 class JWTAuthentication(BasicAuthentication):
     def authenticate(self, request):
